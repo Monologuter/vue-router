@@ -14,6 +14,11 @@ Vue.use(Router)
 // 创建一个router对象
 export default new Router({
   routes: [
+  // 路由的默认路径
+    {
+      path: '/',
+      redirect: '/hello'
+    },
     {
       path: '/hello',
       name: 'HelloWorld',
@@ -24,6 +29,8 @@ export default new Router({
       name: 'About',
       component: About
     }
-  ]
+  ],
+  // 配置路径为HTML5的history属性
+  mode:'history'
 })
 
