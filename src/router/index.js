@@ -31,6 +31,7 @@ export default new Router({
     }
   ],
   // 配置路径为HTML5的history属性
-  mode:'history'
+  mode:'history',
+  // linkActiveClass: "active"
 })
 
