@@ -1,18 +1,34 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <router-view/>
+    <!-- <router-view/>
     <router-link to="/hello" tag="button"  replace  active-class="active">首页</router-link>
-    <router-link to="/about" tag="button"  replace  active-class="active">关于</router-link>
+    <router-link to="/about" tag="button"  replace  active-class="active">关于</router-link> -->
 
-    <router-view ></router-view>
+    <div @click="indexButton">首页</div>
+    <div @click="aboutButton">关于</div>
+
+    <router-view></router-view>
 
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  methods:{
+    indexButton(){
+      // 通过代码的方式修改路由跳转
+      // this.$router.push('/hello')
+      this.$router.replace('/hello')
+      console.log('indexButton')
+    },
+    aboutButton(){
+      // this.$router.push('/about')
+      this.$router.replace('/about')
+      console.log('aboutButton')
+    }
+  }
 }
 </script>
 
