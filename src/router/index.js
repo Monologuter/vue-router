@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import About from '@/components/About'
+import User from '@/components/User'
 import VueRouter from 'vue-router'
 
 // 步骤：
@@ -55,7 +56,13 @@ export default new Router({
       path: '/about',
       name: 'About',
       component: About
-    }
+    },
+    {
+      path: '/user/:userId',
+      name: 'User',
+      component: User
+    },
+
   ],
   // 配置路径为HTML5的history属性
   mode:'history',
