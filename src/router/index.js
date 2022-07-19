@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import About from '@/components/About'
-import User from '@/components/User'
+// import HelloWorld from '@/components/HelloWorld'
+// import About from '@/components/About'
+// import User from '@/components/User'
 import VueRouter from 'vue-router'
 
 // 步骤：
@@ -36,6 +36,11 @@ VueRouter.prototype.replace = function replace(location){
   return originalReplace.call(this , location).catch(err=>err)
 }
 
+
+// 路由懒加载
+const HelloWorld = () => import ('../components/HelloWorld.vue')
+const About = () => import ('../components/About.vue')
+const User = () => import ('../components/User.vue')
 
 
 
