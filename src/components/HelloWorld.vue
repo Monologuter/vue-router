@@ -1,6 +1,10 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <router-link to="/hello/news">新闻</router-link>
+    <router-link to="/hello/message">消息</router-link>
+    <router-view></router-view>
+
     <!-- <h2>Essential Links</h2> -->
     <!-- <ul>
       <li>

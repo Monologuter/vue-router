@@ -42,6 +42,9 @@ const HelloWorld = () => import ('../components/HelloWorld.vue')
 const About = () => import ('../components/About.vue')
 const User = () => import ('../components/User.vue')
 
+// 嵌套组件
+const HelloNews = () => import('../components/HelloNews.vue')
+const HelloMessage = () => import('../components/HelloMessage.vue')
 
 
 // 创建一个router对象
@@ -50,12 +53,30 @@ export default new Router({
   // 路由的默认路径
     {
       path: '/',
-      redirect: '/hello'
+      redirect: '/hello',
     },
     {
       path: '/hello',
       name: 'HelloWorld',
-      component: HelloWorld
+      component: HelloWorld,
+      children:[
+        // 嵌套默认路径
+        {
+          path:'',
+          redirect:'news'
+        },
+
+
+        {
+          path: 'news',
+          component:HelloNews
+        },
+        {
+          path:'message',
+          name : 'Message',
+          component:HelloMessage
+        }
+      ]
     },
     {
       path: '/about',
