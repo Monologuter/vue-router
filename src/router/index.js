@@ -48,56 +48,89 @@ const HelloNews = () => import('../components/HelloNews.vue')
 const HelloMessage = () => import('../components/HelloMessage.vue')
 
 
-// 创建一个router对象
-export default new Router({
-  routes: [
+const routes = [
   // 路由的默认路径
     {
       path: '/',
       redirect: '/hello',
+      meta:{
+        title:'首页'
+      }
     },
     {
       path: '/hello',
       name: 'HelloWorld',
       component: HelloWorld,
+      meta:{
+        title:'首页'
+      },
       children:[
         // 嵌套默认路径
         {
           path:'',
-          redirect:'news'
+          redirect:'news',
+          meta:{
+            title:'新闻'
+          }
         },
-
-
         {
           path: 'news',
-          component:HelloNews
+          component:HelloNews,
+          meta:{
+            title:'新闻'
+          }
         },
         {
           path:'message',
           name : 'Message',
-          component:HelloMessage
+          component:HelloMessage,
+          meta:{
+            title:'消息'
+          }
         }
       ]
     },
     {
       path: '/about',
       name: 'About',
-      component: About
+      component: About,
+      meta:{
+        title:'关于'
+      }
     },
     {
       path: '/user/:userId',
       name: 'User',
-      component: User
+      component: User,
+      meta:{
+        title:'用户'
+      }
     },
     {
       path: '/profile',
       name: 'Profile',
-      component: Profile
+      component: Profile,
+      meta:{
+        title:'档案'
+      }
     },
 
-  ],
-  // 配置路径为HTML5的history属性
-  mode:'history',
-  linkActiveClass: "active"
-})
+  ]
+
+  const router = new Router({
+    routes,
+    // 配置路径为HTML5的history属性
+    mode:'history',
+    linkActiveClass: "active",
+  })
+
+  router.beforeEach((to, from, next) => {
+    document.title = to.meta.title
+    next()
+  })
+
+
+
+// 将router对象存入到Router实例中
+export default router;
 
