@@ -96,6 +96,10 @@ const routes = [
       component: About,
       meta:{
         title:'关于'
+      },
+      beforeEnter: (to, from, next) => {
+        next()
+        console.log('路由独享守卫')
       }
     },
     {
@@ -124,9 +128,16 @@ const routes = [
     linkActiveClass: "active",
   })
 
+
+  // 前置钩子hook
   router.beforeEach((to, from, next) => {
     document.title = to.meta.title
     next()
+  })
+
+  // 后置钩子
+  router.afterEach((to , from)=>{
+    console.log('--------------------')
   })
 
 
