@@ -4,8 +4,10 @@
      <router-view/>
     <router-link to="/hello" tag="button"  replace  active-class="active">首页</router-link>
     <router-link to="/about" tag="button"  replace  active-class="active">关于</router-link>
-    <router-link v-bind:to="'/user/'+userId" tag="button"  replace  active-class="active">name</router-link>
-
+    <!-- <router-link v-bind:to="'/user/'+userId" tag="button"  replace  active-class="active">name</router-link>
+    <router-link v-bind:to="{path: '/profile' , query:{name:'陈亚', age:19}}" tag="button"  replace  active-class="active">档案</router-link> -->
+    <button  @click="userClick">用户</button>
+    <button @click="profileClick">档案</button>
     <!-- <div @click="indexButton">首页</div>
     <div @click="aboutButton">关于</div>
 
@@ -33,7 +35,20 @@ export default {
       // this.$router.push('/about')
       this.$router.replace('/about')
       console.log('aboutButton')
+    },
+    userClick(){
+      this.$router.push('/user/'+ this.userId)
+    },
+    profileClick(){
+      this.$router.push({
+        path:'/profile',
+        query:{
+          name:'chenya',
+          age: 19
+        }
+      })
     }
+
   }
 }
 </script>

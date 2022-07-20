@@ -41,6 +41,7 @@ VueRouter.prototype.replace = function replace(location){
 const HelloWorld = () => import ('../components/HelloWorld.vue')
 const About = () => import ('../components/About.vue')
 const User = () => import ('../components/User.vue')
+const Profile = () => import('../components/Profile.vue')
 
 // 嵌套组件
 const HelloNews = () => import('../components/HelloNews.vue')
@@ -87,6 +88,11 @@ export default new Router({
       path: '/user/:userId',
       name: 'User',
       component: User
+    },
+    {
+      path: '/profile',
+      name: 'Profile',
+      component: Profile
     },
 
   ],
